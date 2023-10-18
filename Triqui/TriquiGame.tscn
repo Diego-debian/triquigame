@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Background/bg3.png" type="Texture" id=1]
+[ext_resource path="res://Buttons/Botones.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Labels/Labels.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Triqui/TriquiGame.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 2480, 3508 )
+
+[node name="TriquiGame" type="Node"]
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Botones" parent="Panel" instance=ExtResource( 2 )]
+
+[node name="Labels" parent="Panel" instance=ExtResource( 3 )]
+
+[connection signal="botones_player" from="Panel/Botones" to="." method="_on_Botones_botones_player"]
